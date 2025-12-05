@@ -1,4 +1,4 @@
-import { displayRole } from '../../services/formatting'
+import { displayRole, displayActive } from '../../services/formatting'
 import { useNavigate, useParams } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { getUserById } from '../../services/user-service'
@@ -47,7 +47,7 @@ function UserDetailPage(){
                 </div>
                 <div className="info-row">
                     <div className="info-box"><span>Role: </span><p>{displayRole(user.role)}</p></div>
-                    <div className="info-box"><span>Working status: </span><p>{user.active ? 'Active' : 'Inactive'}</p></div>
+                    <div className="info-box"><span>Working status: </span><p>{displayActive(user.active)}</p></div>
                 </div>
             </div>
             <div className="page-actions">

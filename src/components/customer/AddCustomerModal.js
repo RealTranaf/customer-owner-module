@@ -39,7 +39,7 @@ function AddCustomerModal({ closeModal, refresh }) {
             <div className="modal" onClick={(e) => e.stopPropagation()}>
                 <div className="modal-header">
                     <h3><i className="bi bi-plus-lg"></i> Add Customer</h3>
-                    <i className="bi bi-x-lg" onClick={closeModal}></i>
+                    <i className="bi bi-x-lg modal-close" onClick={closeModal}></i>
                 </div>
 
                 <form className="modal-form" onSubmit={handleSubmit}>
@@ -62,7 +62,7 @@ function AddCustomerModal({ closeModal, refresh }) {
                         </div>
                     </div>
                     <div className="form-row">
-                        <div className="form-group">
+                        <div className="form-group" style={{ flex: 1 }}>
                             <label>Note</label>
                             <textarea name="note" onChange={handleChange}></textarea>
                         </div>

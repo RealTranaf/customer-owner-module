@@ -1,10 +1,8 @@
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { getAllUsers } from '../../services/user-service'
-import { displayRole } from '../../services/formatting'
+import { displayRole, displayActive } from '../../services/formatting'
 import AddUserModal from './AddUserModal'
-// import EditUserModal from './EditUserModal'
-// import ResetPassword from './ResetPassword'
 
 function User() {
     const navigate = useNavigate()
@@ -15,10 +13,7 @@ function User() {
     const [totalPages, setTotalPages] = useState(0)
     const [loading, setLoading] = useState(false)
 
-    // const [selectedUser, setSelectedUser] = useState(null)
-
     const [showAddModal, setShowAddModal] = useState(false)
-    // const [showResetModal, setShowResetModal] = useState(false)
 
     const [search, setSearch] = useState('')
     const [sortBy, setSortBy] = useState('id')
@@ -66,16 +61,8 @@ function User() {
         fetchUsers(currentPage, '', 'id', 'asc')
     }
 
-    // const handleItemClick = (u) => {
-    //     setSelectedUser(u)
-    // }
-
-    // const closeModal = () => {
-    //     setSelectedUser(null)
-    // }
-
     return (
-        <div className='tab-page'>
+        <div className='detail-page'>
             <div className='page-header'>
                 <h2>User accounts</h2>
                 <button className="btn-add" onClick={() => setShowAddModal(true)}>
@@ -88,12 +75,12 @@ function User() {
                     placeholder="Search users..."
                     value={search}
                     onChange={handleSearchChange}
-                    style={{ width: '250px', padding: '6px' }}
+                    className="filter-input"
                 />
                 <button className="btn-search" onClick={handleSearchConfirm}>
                     <i className="bi bi-search"></i> Search
                 </button>
-                <button className="btn-search" onClick={handleClearSearch}>
+                <button className="btn-clear" onClick={handleClearSearch}>
                     <i className="bi bi-search"></i> Clear
                 </button>
             </div>
@@ -117,7 +104,7 @@ function User() {
                                         <td>{user.username}</td>
                                         <td>{user.phoneNum}</td>
                                         <td>{displayRole(user.role)}</td>
-                                        <td>{user.active ? 'Active' : 'Inactive'}</td>
+                                        <td>{displayActive(user.active)}</td>
                                     </tr>
                                 ))}
                             </tbody>
@@ -136,26 +123,9 @@ function User() {
                     </div>
                 </>
             )}
-
             {showAddModal && (
                 <AddUserModal closeModal={() => setShowAddModal(false)} refresh={fetchUsers}></AddUserModal>
             )}
-            
-            {/* {selectedUser && (
-                <EditUserModal
-                    user={selectedUser}
-                    closeModal={closeModal}
-                    refresh={fetchUsers}
-                    onReset={() => setShowResetModal(true)}
-                />
-            )} */}
-            {/* {showResetModal && (
-                <ResetPassword
-                    user={selectedUser}
-                    closeModal={() => setShowResetModal(false)}
-                    refresh={fetchUsers}
-                />
-            )} */}
         </div>
     )
 }

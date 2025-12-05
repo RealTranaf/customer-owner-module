@@ -60,7 +60,7 @@ function CustomerDetailPage(){
                     <div className="info-box">
                         <span>Purchase History:</span>
                         {customer.purchases && customer.purchases.length > 0 ? (
-                            <table className="purchase-table">
+                            <table className="table">
                                 <thead>
                                     <tr>
                                         <th>Date</th>

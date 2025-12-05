@@ -1,9 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { getAllCustomers } from '../../services/customer-service'
-// import CustomerModal from './CustomerModal'
 import AddCustomerModal from './AddCustomerModal'
-// import EditCustomerModal from './EditCustomerModal'
 import { formatDate, formatCurrency, displayGender } from '../../services/formatting'
 
 function Customer() {
@@ -15,10 +13,7 @@ function Customer() {
     const [totalPages, setTotalPages] = useState(0)
     const [loading, setLoading] = useState(false)
 
-    // const [selectedCustomer, setSelectedCustomer] = useState(null)
-
     const [showAddModal, setShowAddModal] = useState(false)
-    // const [showEditModal, setShowEditModal] = useState(false)
 
     const [search, setSearch] = useState('')
     const [startDate, setStartDate] = useState('')
@@ -84,16 +79,8 @@ function Customer() {
         fetchCustomers(currentPage, '', '', '', 'lastPurchaseDate', 'desc')
     }
 
-    // const handleItemClick = (cat) => {
-    //     setSelectedCustomer(cat)
-    // }
-
-    // const closeModal = () => {
-    //     setSelectedCustomer(null)
-    // }
-
     return (
-        <div className='tab-page'>
+        <div className='detail-page'>
             <div className='page-header'>
                 <h2>Customers</h2>
                 <button className="btn-add" onClick={() => setShowAddModal(true)}>
@@ -101,50 +88,54 @@ function Customer() {
                 </button>
             </div>
             <div className='filters'>
-                <input
-                    type="text"
-                    placeholder="Search customers..."
-                    value={search}
-                    onChange={handleSearchChange}
-                    style={{ width: '250px', padding: '6px' }}
-                />
-                <input
-                    type="date"
-                    value={startDate}
-                    onChange={handleStartDateChange}
-                    style={{ padding: '6px' }}
-                    placeholder="Start date"
-                />
-                <input
-                    type="date"
-                    value={endDate}
-                    onChange={handleEndDateChange}
-                    style={{ padding: '6px' }}
-                    placeholder="End date"
-                />
-                <select value={gender} onChange={handleGenderChange}>
-                    <option value="">All Genders</option>
-                    <option value="MALE">Male</option>
-                    <option value="FEMALE">Female</option>
-                    <option value="NaN">Other/Unknown</option>
-                </select>
-                <select value={sortBy} onChange={e => setSortBy(e.target.value)}>
-                    <option value="name">Name</option>
-                    <option value="createdAt">Created At</option>
-                    <option value="lastPurchaseDate">Last Purchase Date</option>
-                    <option value="totalPurchaseAmount">Total Purchased</option>
-                    <option value="gender">Gender</option>
-                </select>
-                <select value={sortDir} onChange={e => setSortDir(e.target.value)}>
-                    <option value="asc">Ascending</option>
-                    <option value="desc">Descending</option>
-                </select>
-                <button className="btn-search" onClick={handleSearchConfirm}>
-                    <i className="bi bi-search"></i> Search
-                </button>
-                <button className="btn-search" onClick={handleClearSearch}>
-                    <i className="bi bi-search"></i> Clear
-                </button>
+                <div className='filter-group'>
+                    <input
+                        type="text"
+                        placeholder="Search customers..."
+                        value={search}
+                        onChange={handleSearchChange}
+                        className="filter-input"
+                    />
+                    <input
+                        type="date"
+                        value={startDate}
+                        onChange={handleStartDateChange}
+                        className="filter-input"
+                        placeholder="Start date"
+                    />
+                    <input
+                        type="date"
+                        value={endDate}
+                        onChange={handleEndDateChange}
+                        className="filter-input"
+                        placeholder="End date"
+                    />
+                    <select value={gender} onChange={handleGenderChange} className="filter-select">
+                        <option value="">All Genders</option>
+                        <option value="MALE">Male</option>
+                        <option value="FEMALE">Female</option>
+                        <option value="NaN">Other/Unknown</option>
+                    </select>
+                    <select value={sortBy} onChange={e => setSortBy(e.target.value)} className="filter-select">
+                        <option value="name">Name</option>
+                        <option value="createdAt">Created At</option>
+                        <option value="lastPurchaseDate">Last Purchase Date</option>
+                        <option value="totalPurchaseAmount">Total Purchased</option>
+                        <option value="gender">Gender</option>
+                    </select>
+                    <select value={sortDir} onChange={e => setSortDir(e.target.value)} className="filter-select">
+                        <option value="asc">Ascending</option>
+                        <option value="desc">Descending</option>
+                    </select>
+                </div>
+                <div className='filter-actions'>
+                    <button className="btn-search" onClick={handleSearchConfirm}>
+                        <i className="bi bi-search"></i> Search
+                    </button>
+                    <button className="btn-clear" onClick={handleClearSearch}>
+                        <i className="bi bi-search"></i> Clear
+                    </button>
+                </div>
             </div>
             {loading ? (
                 <p>Loading...</p>
@@ -191,23 +182,9 @@ function Customer() {
                     </div>
                 </>
             )}
-            {/* {selectedCustomer && (
-                <CustomerModal
-                    customer={selectedCustomer}
-                    closeModal={closeModal}
-                    onEdit={() => setShowEditModal(true)}
-                    refresh={fetchCustomers} />
-            )} */}
             {showAddModal && (
                 <AddCustomerModal closeModal={() => setShowAddModal(false)} refresh={fetchCustomers}></AddCustomerModal>
             )}
-            {/* {showEditModal && (
-                <EditCustomerModal
-                    customer={selectedCustomer}
-                    closeModal={() => setShowEditModal(false)}
-                    refresh={fetchCustomers}
-                />
-            )} */}
         </div>
     )
 }

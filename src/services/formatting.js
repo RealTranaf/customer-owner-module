@@ -27,3 +27,9 @@ export function displayRole(role) {
     if (role === 'SALES') return "Nhân viên bán hàng"
     return "Khác"
 }
+
+export function displayActive(active) {
+    if (active === true) return "Đang làm việc"
+    if (active === false) return "Không làm việc"
+    return "Khác"
+}
