@@ -13,9 +13,10 @@ export async function getUserById(id) {
     return await axios.get(`${API_URL}/${id}`)
 }
 
-export async function updateUser(id, username, phoneNum, active, role) {
+export async function updateUser(id, username, name, phoneNum, active, role) {
     const formData = new FormData()
     formData.append('username', username)
+    formData.append('name', name)
     formData.append('phoneNum', phoneNum)
     formData.append('isActive', active)
     formData.append('role', role)

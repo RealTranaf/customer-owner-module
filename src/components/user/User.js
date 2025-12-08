@@ -93,6 +93,7 @@ function User() {
                             <thead>
                                 <tr>
                                     <th>Username</th>
+                                    <th>Name</th>
                                     <th>Phone Number</th>
                                     <th>Role</th>
                                     <th>Active Status</th>
@@ -102,6 +103,7 @@ function User() {
                                 {users.map(user => (
                                     <tr key={user.id} onClick={() => navigate(`${user.id}`)}>
                                         <td>{user.username}</td>
+                                        <td>{user.name}</td>
                                         <td>{user.phoneNum}</td>
                                         <td>{displayRole(user.role)}</td>
                                         <td>{displayActive(user.active)}</td>

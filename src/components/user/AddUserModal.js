@@ -4,6 +4,7 @@ import { signup } from "../../services/auth-service"
 function AddUserModal({ closeModal, refresh }) {
     const [form, setForm] = useState({
         username: "",
+        name: "",
         phoneNum: "",
         password: "",
         active: false,
@@ -22,6 +23,7 @@ function AddUserModal({ closeModal, refresh }) {
         try {
             await signup(
                 form.username,
+                form.name,
                 form.phoneNum,
                 form.password,
                 form.active,
@@ -51,15 +53,21 @@ function AddUserModal({ closeModal, refresh }) {
                             <input type="text" name="username" required onChange={handleChange} />
                         </div>
                         <div className="form-group">
-                            <label>Phone number</label>
-                            <input type="text" name="phoneNum" required onChange={handleChange} />
+                            <label>Name</label>
+                            <input type="text" name="name" required onChange={handleChange} />
                         </div>
                     </div>
                     <div className="form-row">
                         <div className="form-group">
+                            <label>Phone number</label>
+                            <input type="text" name="phoneNum" required onChange={handleChange} />
+                        </div>
+                        <div className="form-group">
                             <label>Password</label>
                             <input type="password" name="password" required onChange={handleChange} />
                         </div>
+                    </div>
+                    <div className="form-row">
                         <div className="form-group">
                             <label>Role</label>
                             <select name="role" value={form.role} onChange={handleChange}>

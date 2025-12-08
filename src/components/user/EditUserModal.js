@@ -4,6 +4,7 @@ import { updateUser } from "../../services/user-service"
 function EditUserModal({user, closeModal, refresh, onReset}) {
     const [form, setForm] = useState({
         username: user.username,
+        name: user.name,
         phoneNum: user.phoneNum,
         active: user.active,
         role: user.role
@@ -22,6 +23,7 @@ function EditUserModal({user, closeModal, refresh, onReset}) {
             await updateUser(
                 user.id,
                 form.username,
+                form.name,
                 form.phoneNum,
                 form.active,
                 form.role
@@ -52,6 +54,10 @@ function EditUserModal({user, closeModal, refresh, onReset}) {
                         <div className="form-group">
                             <label>Phone Number</label>
                             <input type="text" name="phoneNum" value={form.phoneNum} required onChange={handleChange} />
+                        </div>
+                        <div className="form-group">
+                            <label>Name</label>
+                            <input type="text" name="name" value={form.name} required onChange={handleChange} />
                         </div>
                     </div>
                     <div className="form-row">

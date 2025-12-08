@@ -44,6 +44,7 @@ function UserDetailPage(){
                 <div className="info-row">
                     <div className="info-box"><span>Username: </span><p>{user.username}</p></div>
                     <div className="info-box"><span>Phone number: </span><p>{user.phoneNum}</p></div>
+                    <div className="info-box"><span>Name: </span><p>{user.name}</p></div>
                 </div>
                 <div className="info-row">
                     <div className="info-box"><span>Role: </span><p>{displayRole(user.role)}</p></div>

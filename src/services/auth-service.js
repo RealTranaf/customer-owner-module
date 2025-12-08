@@ -14,8 +14,8 @@ export async function logout(){
 }
 
 
-export async function signup(username, phoneNum, password, active, role) {
-    const response = await axios.post(`${API_URL}/signup`, { username, phoneNum, password, active, role })
+export async function signup(username, name, phoneNum, password, active, role) {
+    const response = await axios.post(`${API_URL}/signup`, { username, name, phoneNum, password, active, role })
     return response.data
 }
 
