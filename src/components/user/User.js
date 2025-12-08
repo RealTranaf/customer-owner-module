@@ -70,19 +70,23 @@ function User() {
                 </button>
             </div>
             <div className='filters'>
-                <input
-                    type="text"
-                    placeholder="Search users..."
-                    value={search}
-                    onChange={handleSearchChange}
-                    className="filter-input"
-                />
-                <button className="btn-search" onClick={handleSearchConfirm}>
-                    <i className="bi bi-search"></i> Search
-                </button>
-                <button className="btn-clear" onClick={handleClearSearch}>
-                    <i className="bi bi-search"></i> Clear
-                </button>
+                <div className='filter-group'>
+                    <input
+                        type="text"
+                        placeholder="Search users..."
+                        value={search}
+                        onChange={handleSearchChange}
+                        className="filter-input"
+                    />
+                </div>
+                <div className='filter-actions'>
+                    <button className="btn-search" onClick={handleSearchConfirm}>
+                        <i className="bi bi-search"></i> Search
+                    </button>
+                    <button className="btn-clear" onClick={handleClearSearch}>
+                        <i className="bi bi-search"></i> Clear
+                    </button>
+                </div>
             </div>
             {loading ? (
                 <p>Loading...</p>

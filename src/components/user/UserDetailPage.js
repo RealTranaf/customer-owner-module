@@ -34,17 +34,27 @@ function UserDetailPage(){
 
     return (
         <div className="detail-page">
+            <h2>Customer Info</h2>
             <div className='page-header'>
                 <button className="btn-back" onClick={() => navigate(-1)}>
                     ← Back
                 </button>
-                <h2>Customer Info</h2>
+                <div className=''>
+                    <button className="btn-edit" onClick={() => setShowResetModal(true)}>
+                        <i className="bi bi-pencil-square"></i> Reset Password
+                    </button>
+                    <button className="btn-edit" onClick={() => setShowEditModal(true)}>
+                        <i className="bi bi-pencil-square"></i> Edit User
+                    </button>
+                </div>
             </div>
             <div className="modal-info">
                 <div className="info-row">
                     <div className="info-box"><span>Username: </span><p>{user.username}</p></div>
                     <div className="info-box"><span>Phone number: </span><p>{user.phoneNum}</p></div>
-                    <div className="info-box"><span>Name: </span><p>{user.name}</p></div>
+                </div>
+                <div className='info-row'>
+                    <div className="info-box"><span>Name: </span><p>{user.name}</p></div>   
                 </div>
                 <div className="info-row">
                     <div className="info-box"><span>Role: </span><p>{displayRole(user.role)}</p></div>
@@ -52,12 +62,6 @@ function UserDetailPage(){
                 </div>
             </div>
             <div className="page-actions">
-                <button className="btn-edit" onClick={() => setShowResetModal(true)}>
-                    <i className="bi bi-pencil-square"></i> Reset Password
-                </button>
-                <button className="btn-edit" onClick={() => setShowEditModal(true)}>
-                    <i className="bi bi-pencil-square"></i> Edit User
-                </button>
             </div>
             {showEditModal && (
                 <EditUserModal

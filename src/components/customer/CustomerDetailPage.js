@@ -32,11 +32,14 @@ function CustomerDetailPage(){
 
     return (
         <div className="detail-page">
+            <h2>Customer Info</h2>
             <div className='page-header'>
                 <button className="btn-back" onClick={() => navigate(-1)}>
                     ← Back
                 </button>
-                <h2>Customer Info</h2>
+                <button className="btn-edit" onClick={() => setShowEditModal(true)}>
+                    <i className="bi bi-pencil-square"></i> Edit Customer
+                </button>
             </div>
             <div className="modal-info">
                 <div className="info-row">
@@ -84,11 +87,8 @@ function CustomerDetailPage(){
                     </div>
                 </div>
             </div>
-            <div className="page-actions">
-                <button className="btn-edit" onClick={() => setShowEditModal(true)}>
-                    <i className="bi bi-pencil-square"></i> Edit Customer
-                </button>
-            </div>
+            {/* <div className="page-actions">
+            </div> */}
             {showEditModal && (
                 <EditCustomerModal
                     customer={customer}
