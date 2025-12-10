@@ -74,8 +74,8 @@ function CustomerDetailPage(){
                                 <tbody>
                                     {customer.purchases.map(purchase => (
                                         <tr key={purchase.id}>
-                                            <td>{formatDate(purchase.purchaseDate)}</td>
-                                            <td>{formatCurrency(purchase.amount)}</td>
+                                            <td>{formatDate(purchase.createdAt)}</td>
+                                            <td>{formatCurrency(purchase.totalAmount)}</td>
                                             <td>{purchase.note}</td>
                                         </tr>
                                     ))}
